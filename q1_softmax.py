@@ -23,7 +23,8 @@ def softmax(x):
         m = np.max(x, axis=1).reshape(-1, 1)
         x -= m
         exp_x = np.exp(x)
-        res = exp_x/np.sum(exp_x, axis=1)
+        exp_x /= np.sum(exp_x, axis=1).reshape(-1, 1)
+        res = exp_x
     else:
         m = np.max(x)
         exp_x = np.exp(x-m)
